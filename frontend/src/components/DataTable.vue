@@ -21,8 +21,9 @@
         <thead>
           <tr>
             <th v-if="visibleColumns.id">ID</th>
-            <th v-if="visibleColumns.name">Nombre</th>
-            <th v-if="visibleColumns.username">Usuario</th>
+            <th v-if="visibleColumns.nombre">Nombre</th>
+            <th v-if="visibleColumns.apellidos">Apellidos</th>
+            <th v-if="visibleColumns.telefono">Telefono</th>
             <th v-if="visibleColumns.email">Email</th>
             <th>Image</th>
             <th>Actions</th>
@@ -31,23 +32,26 @@
         <tbody>
           <tr v-for="user in paginatedUsers" :key="user.id">
             <td v-if="visibleColumns.id">{{ user.id }}</td>
-            <td v-if="visibleColumns.name">{{ user.usuarioNombre }}</td>
-            <td v-if="visibleColumns.username">{{ user.usuarioApellidoPaterno }}</td>
+            <td v-if="visibleColumns.nombre">{{ user.usuarioNombre }}</td>
+            <td v-if="visibleColumns.apellidos">{{ user.usuarioApellidoPaterno + " " + user.usuarioApellidoMaterno }}
+            </td>
+            <td v-if="visibleColumns.telefono">{{ user.usuarioTelefono }}</td>
             <td v-if="visibleColumns.email">{{ user.usuarioEmail }}</td>
+
             <td>
               <div class="image-container">
-                <img v-if="user.imageUrl" :src="user.imageUrl" :alt="`${user.name} ${user.username}`" />
+                <img v-if="user.imageUrl" :src="user.imageUrl" :alt="`${user.nombre} ${user.apellidos}`" />
                 <div v-else class="placeholder"></div>
                 <input type="file" accept="image/*" @change="handleImageUpload(user.id, $event)" class="file-input"
                   :id="'image-upload-' + user.id" />
                 <label :for="'image-upload-' + user.id" class="upload-label">
-                  Upload
-                </label>
+
+                  Foto </label>
               </div>
             </td>
             <td>
               <button @click="deleteUser(user.usuarioEmail)" class="delete-btn">
-                Delete
+                ✖︎
               </button>
             </td>
           </tr>
@@ -78,8 +82,9 @@ export default {
     const itemsPerPage = 4;
     const visibleColumns = ref({
       id: true,
-      name: true,
-      username: true,
+      nombre: true,
+      apellidos: true,
+      telefono: true,
       email: true,
     });
     const showColumnOptions = ref(false);
@@ -178,7 +183,6 @@ export default {
   margin: auto;
   padding: 20px;
   max-width: 80%;
-  background-color: #e0e0e0;
 }
 
 
@@ -236,7 +240,8 @@ export default {
 
 .table-container {
   overflow-x: auto;
-  background-color: #f0f0f0;
+  background-color: var(--dark-blue);
+  border: 1px solid black;
   /* Background color for the table container */
 }
 
@@ -250,7 +255,7 @@ export default {
 .data-table td {
   padding: 12px;
   text-align: center;
-  background-color: rgb(104, 104, 104);
+  background-color: var(--light-blue);
   border-bottom: 1px solid #ddd;
 }
 
@@ -279,9 +284,14 @@ export default {
 .image-container .upload-label {
   margin-left: 8px;
   font-size: 1rem;
-  color: darkblue;
+  color: var(--dark-blue);
   cursor: pointer;
   font-weight: 700;
+  background-color: #f7f7f700;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+
 }
 
 .placeholder {
@@ -292,7 +302,7 @@ export default {
 }
 
 .delete-btn {
-  color: #801814;
+  color: var(--dark-red);
   background: none;
   border: none;
   cursor: pointer;

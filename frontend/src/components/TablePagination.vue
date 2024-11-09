@@ -1,63 +1,55 @@
 <template>
-    <div class="pagination">
-      <button
-        class="btn btn-previous"
-        @click="handlePrevious"
-        :disabled="currentPage === 0"
-      >
-        Anterior
-      </button>
-      <button
-        class="btn btn-next"
-        @click="handleNext"
-        :disabled="currentPage === totalPages - 1"
-      >
-        Siguiente
-      </button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      currentPage: {
-        type: Number,
-        required: true,
-      },
-      totalUsers: {
-        type: Number,
-        required: true,
-      },
-      itemsPerPage: {
-        type: Number,
-        required: true,
-      },
-      onPageChange: {
-        type: Function,
-        required: true,
-      },
+  <div class="pagination">
+    <button class="btn btn-previous" @click="handlePrevious" :disabled="currentPage === 0">
+      Anterior
+    </button>
+    <button class="btn btn-next" @click="handleNext" :disabled="currentPage === totalPages - 1">
+      Siguiente
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    currentPage: {
+      type: Number,
+      required: true,
     },
-    computed: {
-      totalPages() {
-        return Math.ceil(this.totalUsers / this.itemsPerPage);
-      },
+    totalUsers: {
+      type: Number,
+      required: true,
     },
-    methods: {
-      handlePrevious() {
-        if (this.currentPage > 0) {
-          this.onPageChange(this.currentPage - 1);
-        }
-      },
-      handleNext() {
-        if (this.currentPage < this.totalPages - 1) {
-          this.onPageChange(this.currentPage + 1);
-        }
-      },
+    itemsPerPage: {
+      type: Number,
+      required: true,
     },
-  };
-  </script>
-  
-  <style scoped>
+    onPageChange: {
+      type: Function,
+      required: true,
+    },
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.totalUsers / this.itemsPerPage);
+    },
+  },
+  methods: {
+    handlePrevious() {
+      if (this.currentPage > 0) {
+        this.onPageChange(this.currentPage - 1);
+      }
+    },
+    handleNext() {
+      if (this.currentPage < this.totalPages - 1) {
+        this.onPageChange(this.currentPage + 1);
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
 .pagination {
   display: flex;
   justify-content: center;
@@ -75,18 +67,17 @@
 }
 
 .btn:disabled {
-  background-color: #ccc; 
-  color: #818181; 
+  background-color: #ccc;
+  color: #818181;
   cursor: not-allowed;
   opacity: 0.8;
 }
 
 .btn-previous {
-  background-color: rgb(139, 4, 4);
+  background-color: var(--dark-red);
 }
 
 .btn-next {
-  background-color: rgb(0, 4, 216);
+  background-color: var(--dark-blue);
 }
-  </style>
-  
+</style>

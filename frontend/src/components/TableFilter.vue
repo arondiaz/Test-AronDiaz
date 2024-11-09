@@ -8,11 +8,20 @@
         <ul class="searchResults" v-show="showResults && searchResults.length > 0">
             <div class="results-container">
                 <li v-for="user in searchResults.slice(0, 3)" :key="user.id"
-                    @click="route(user.id); showResults = false" class="li">
+                    @click="showUserModal(user); showResults = false" class="li">
                     {{ user.usuarioNombre }}
                 </li>
             </div>
         </ul>
+
+
+        <div v-if="selectedUser" class="modal-overlay" @click="closeModal">
+            <div class="modal-content" @click.stop>
+                <h3>{{ selectedUser.usuarioNombre }}</h3>
+                <p>Información adicional del usuario aquí...</p>
+                <button @click="closeModal">Cerrar</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -30,7 +39,7 @@ export default {
         const searchTerm = ref("");
         const searchResults = ref([]);
         const showResults = ref(false);
-
+        const selectedUser = ref(null);
 
         const handleSearch = (term) => {
             if (term) {
@@ -42,6 +51,16 @@ export default {
             }
             // console.log(searchResults.value.length > 1);
         };
+
+
+        const showUserModal = (user) => {
+            selectedUser.value = user;
+        };
+
+        const closeModal = () => {
+            selectedUser.value = null;
+        };
+
 
         const route = (id) => {
             console.log(id);
@@ -68,7 +87,11 @@ export default {
             searchResults,
             handleSearch,
             route,
-            showResults
+            showResults,
+            closeModal,
+            selectedUser,
+            showUserModal,
+
         };
     },
 };
@@ -112,5 +135,25 @@ export default {
 ul li:nth-child(even) {
     background-color: rgb(219, 218, 218);
     color: #333;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
 }
 </style>
