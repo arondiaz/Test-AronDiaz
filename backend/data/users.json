@@ -1,0 +1,432 @@
+{
+    "usuarios": [
+      {
+        "usuarioNombre": "Pablo",
+        "usuarioApellidoPaterno": "Ortega",
+        "usuarioApellidoMaterno": "Rodríguez",
+        "usuarioEmail": "pablo.ortega@example.com",
+        "usuarioTelefono": "555-678-9101"
+      },
+      {
+        "usuarioNombre": "Román",
+        "usuarioApellidoPaterno": "Escamilla",
+        "usuarioApellidoMaterno": "Sosa",
+        "usuarioEmail": "roman.escamilla@example.com",
+        "usuarioTelefono": "555-345-4321"
+      },
+      {
+        "usuarioNombre": "Regina",
+        "usuarioApellidoPaterno": "García",
+        "usuarioApellidoMaterno": "López",
+        "usuarioEmail": "regina.garcia@example.com",
+        "usuarioTelefono": "555-789-1234"
+      },
+      {
+        "usuarioNombre": "Iván",
+        "usuarioApellidoPaterno": "Morales",
+        "usuarioApellidoMaterno": "Carrillo",
+        "usuarioEmail": "ivan.morales@example.com",
+        "usuarioTelefono": "555-567-5432"
+      },
+      {
+        "usuarioNombre": "Rogelio",
+        "usuarioApellidoPaterno": "Luna",
+        "usuarioApellidoMaterno": "Jiménez",
+        "usuarioEmail": "rogelio.luna@example.com",
+        "usuarioTelefono": "555-876-9876"
+      },
+      {
+        "usuarioNombre": "Elena",
+        "usuarioApellidoPaterno": "Vargas",
+        "usuarioApellidoMaterno": "González",
+        "usuarioEmail": "elena.vargas@example.com",
+        "usuarioTelefono": "555-345-1234"
+      },
+      {
+        "usuarioNombre": "Isabella",
+        "usuarioApellidoPaterno": "Peña",
+        "usuarioApellidoMaterno": "Vargas",
+        "usuarioEmail": "isabella.pena@example.com",
+        "usuarioTelefono": "555-654-3210"
+      },
+      {
+        "usuarioNombre": "Guillermo",
+        "usuarioApellidoPaterno": "Olivares",
+        "usuarioApellidoMaterno": "Padilla",
+        "usuarioEmail": "guillermo.olivares@example.com",
+        "usuarioTelefono": "555-210-6543"
+      },
+      {
+        "usuarioNombre": "Luis",
+        "usuarioApellidoPaterno": "Rodríguez",
+        "usuarioApellidoMaterno": "Pérez",
+        "usuarioEmail": "luis.rodriguez@example.com",
+        "usuarioTelefono": "555-654-1230"
+      },
+      {
+        "usuarioNombre": "Adela",
+        "usuarioApellidoPaterno": "Molina",
+        "usuarioApellidoMaterno": "Delgado",
+        "usuarioEmail": "adela.molina@example.com",
+        "usuarioTelefono": "555-789-8765"
+      },
+      {
+        "usuarioNombre": "Berta",
+        "usuarioApellidoPaterno": "Ruíz",
+        "usuarioApellidoMaterno": "Morales",
+        "usuarioEmail": "berta.ruiz@example.com",
+        "usuarioTelefono": "555-321-8765"
+      },
+      {
+        "usuarioNombre": "Diana",
+        "usuarioApellidoPaterno": "Moreno",
+        "usuarioApellidoMaterno": "Sánchez",
+        "usuarioEmail": "diana.moreno@example.com",
+        "usuarioTelefono": "555-789-2345"
+      },
+      {
+        "usuarioNombre": "Sofía",
+        "usuarioApellidoPaterno": "Torres",
+        "usuarioApellidoMaterno": "Ortiz",
+        "usuarioEmail": "sofia.torres@example.com",
+        "usuarioTelefono": "555-987-5432"
+      },
+      {
+        "usuarioNombre": "Mónica",
+        "usuarioApellidoPaterno": "Mendoza",
+        "usuarioApellidoMaterno": "Hernández",
+        "usuarioEmail": "monica.mendoza@example.com",
+        "usuarioTelefono": "555-678-0987"
+      },
+      {
+        "usuarioNombre": "Tomás",
+        "usuarioApellidoPaterno": "Chávez",
+        "usuarioApellidoMaterno": "Trejo",
+        "usuarioEmail": "tomas.chavez@example.com",
+        "usuarioTelefono": "555-321-9876"
+      },
+      {
+        "usuarioNombre": "Armando",
+        "usuarioApellidoPaterno": "Peña",
+        "usuarioApellidoMaterno": "Castillo",
+        "usuarioEmail": "armando.pena@example.com",
+        "usuarioTelefono": "555-876-6543"
+      },
+      {
+        "usuarioNombre": "Alberto",
+        "usuarioApellidoPaterno": "Navarro",
+        "usuarioApellidoMaterno": "Escobar",
+        "usuarioEmail": "alberto.navarro@example.com",
+        "usuarioTelefono": "555-432-6789"
+      },
+      {
+        "usuarioNombre": "Francisco",
+        "usuarioApellidoPaterno": "Perez",
+        "usuarioApellidoMaterno": "Santiago",
+        "usuarioEmail": "francisco.perez@example.com",
+        "usuarioTelefono": "555-455-8756"
+      },
+      {
+        "usuarioNombre": "Paula",
+        "usuarioApellidoPaterno": "Díaz",
+        "usuarioApellidoMaterno": "Castillo",
+        "usuarioEmail": "paula.diaz@example.com",
+        "usuarioTelefono": "555-321-0987"
+      },
+      {
+        "usuarioNombre": "Rosa",
+        "usuarioApellidoPaterno": "Solano",
+        "usuarioApellidoMaterno": "Peralta",
+        "usuarioEmail": "rosa.solano@example.com",
+        "usuarioTelefono": "555-890-3210"
+      },
+      {
+        "usuarioNombre": "Roberto",
+        "usuarioApellidoPaterno": "Núñez",
+        "usuarioApellidoMaterno": "Guzmán",
+        "usuarioEmail": "roberto.nunez@example.com",
+        "usuarioTelefono": "555-432-1234"
+      },
+      {
+        "usuarioNombre": "Ana",
+        "usuarioApellidoPaterno": "Martínez",
+        "usuarioApellidoMaterno": "Sánchez",
+        "usuarioEmail": "ana.martinez@example.com",
+        "usuarioTelefono": "555-987-6543"
+      },
+      {
+        "usuarioNombre": "Carmen",
+        "usuarioApellidoPaterno": "Fajardo",
+        "usuarioApellidoMaterno": "López",
+        "usuarioEmail": "carmen.fajardo@example.com",
+        "usuarioTelefono": "555-987-0987"
+      },
+      {
+        "usuarioNombre": "Patricia",
+        "usuarioApellidoPaterno": "Galindo",
+        "usuarioApellidoMaterno": "Romero",
+        "usuarioEmail": "patricia.galindo@example.com",
+        "usuarioTelefono": "555-678-2109"
+      },
+      {
+        "usuarioNombre": "Camila",
+        "usuarioApellidoPaterno": "Herrera",
+        "usuarioApellidoMaterno": "Ramírez",
+        "usuarioEmail": "camila.herrera@example.com",
+        "usuarioTelefono": "555-321-6543"
+      },
+      {
+        "usuarioNombre": "Ángel",
+        "usuarioApellidoPaterno": "Beltrán",
+        "usuarioApellidoMaterno": "Aguirre",
+        "usuarioEmail": "angel.beltran@example.com",
+        "usuarioTelefono": "555-789-0987"
+      },
+      {
+        "usuarioNombre": "José Luis",
+        "usuarioApellidoPaterno": "Peña",
+        "usuarioApellidoMaterno": "Figueroa",
+        "usuarioEmail": "joseluis.pena@example.com",
+        "usuarioTelefono": "555-432-2109"
+      },
+      {
+        "usuarioNombre": "Andrea",
+        "usuarioApellidoPaterno": "Santos",
+        "usuarioApellidoMaterno": "Lozano",
+        "usuarioEmail": "andrea.santos@example.com",
+        "usuarioTelefono": "555-890-4321"
+      },
+      {
+        "usuarioNombre": "Enrique",
+        "usuarioApellidoPaterno": "Domínguez",
+        "usuarioApellidoMaterno": "Silva",
+        "usuarioEmail": "enrique.dominguez@example.com",
+        "usuarioTelefono": "555-789-4321"
+      },
+      {
+        "usuarioNombre": "Adrián",
+        "usuarioApellidoPaterno": "Reyes",
+        "usuarioApellidoMaterno": "Velázquez",
+        "usuarioEmail": "adrian.reyes@example.com",
+        "usuarioTelefono": "555-890-3456"
+      },
+      {
+        "usuarioNombre": "Daniel",
+        "usuarioApellidoPaterno": "Vega",
+        "usuarioApellidoMaterno": "Naranjo",
+        "usuarioEmail": "daniel.vega@example.com",
+        "usuarioTelefono": "555-876-0987"
+      },
+      {
+        "usuarioNombre": "Christian",
+        "usuarioApellidoPaterno": "Zúñiga",
+        "usuarioApellidoMaterno": "Delgado",
+        "usuarioEmail": "christian.zuniga@example.com",
+        "usuarioTelefono": "555-234-8765"
+      },
+      {
+        "usuarioNombre": "Pablo",
+        "usuarioApellidoPaterno": "Delgado",
+        "usuarioApellidoMaterno": "Ortega",
+        "usuarioEmail": "pablo.delgado@example.com",
+        "usuarioTelefono": "555-654-1234"
+      },
+      {
+        "usuarioNombre": "José Luis",
+        "usuarioApellidoPaterno": "Peña",
+        "usuarioApellidoMaterno": "Figueroa",
+        "usuarioEmail": "joseluis.pena@example.com",
+        "usuarioTelefono": "555-432-2109"
+      },
+      {
+        "usuarioNombre": "Andrea",
+        "usuarioApellidoPaterno": "Santos",
+        "usuarioApellidoMaterno": "Lozano",
+        "usuarioEmail": "andrea.santos@example.com",
+        "usuarioTelefono": "555-890-4321"
+      },
+      {
+        "usuarioNombre": "Enrique",
+        "usuarioApellidoPaterno": "Domínguez",
+        "usuarioApellidoMaterno": "Silva",
+        "usuarioEmail": "enrique.dominguez@example.com",
+        "usuarioTelefono": "555-789-4321"
+      },
+      {
+        "usuarioNombre": "Adrián",
+        "usuarioApellidoPaterno": "Reyes",
+        "usuarioApellidoMaterno": "Velázquez",
+        "usuarioEmail": "adrian.reyes@example.com",
+        "usuarioTelefono": "555-890-3456"
+      },
+      {
+        "usuarioNombre": "Daniel",
+        "usuarioApellidoPaterno": "Vega",
+        "usuarioApellidoMaterno": "Naranjo",
+        "usuarioEmail": "daniel.vega@example.com",
+        "usuarioTelefono": "555-876-0987"
+      },
+      {
+        "usuarioNombre": "Christian",
+        "usuarioApellidoPaterno": "Zúñiga",
+        "usuarioApellidoMaterno": "Delgado",
+        "usuarioEmail": "christian.zuniga@example.com",
+        "usuarioTelefono": "555-234-8765"
+      },
+      {
+        "usuarioNombre": "Pablo",
+        "usuarioApellidoPaterno": "Delgado",
+        "usuarioApellidoMaterno": "Ortega",
+        "usuarioEmail": "pablo.delgado@example.com",
+        "usuarioTelefono": "555-654-1234"
+      },
+      {
+        "usuarioNombre": "José Luis",
+        "usuarioApellidoPaterno": "Peña",
+        "usuarioApellidoMaterno": "Figueroa",
+        "usuarioEmail": "joseluis.pena@example.com",
+        "usuarioTelefono": "555-432-2109"
+      },
+      {
+        "usuarioNombre": "Andrea",
+        "usuarioApellidoPaterno": "Santos",
+        "usuarioApellidoMaterno": "Lozano",
+        "usuarioEmail": "andrea.santos@example.com",
+        "usuarioTelefono": "555-890-4321"
+      },
+      {
+        "usuarioNombre": "Ene",
+        "usuarioApellidoPaterno": "Domínz",
+        "usuarioApellidoMaterno": "Silva",
+        "usuarioEmail": "enrique.dominguez@example.com",
+        "usuarioTelefono": "555-789-4321"
+      },
+      {
+        "usuarioNombre": "Adrn",
+        "usuarioApellidoPaterno": "Res",
+        "usuarioApellidoMaterno": "Veláez",
+        "usuarioEmail": "adria@example.com",
+        "usuarioTelefono": "555-890-3456"
+      },
+      {
+        "usuarioNombre": "Del",
+        "usuarioApellidoPaterno": "Ga",
+        "usuarioApellidoMaterno": "Najo",
+        "usuarioEmail": "dana@example.com",
+        "usuarioTelefono": "555-876-0987"
+      },
+      {
+        "usuarioNombre": "Christn",
+        "usuarioApellidoPaterno": "Zúñiga",
+        "usuarioApellidoMaterno": "Deldo",
+        "usuarioEmail": "christia@example.com",
+        "usuarioTelefono": "555-234-8765"
+      },
+      {
+        "usuarioNombre": "Plo",
+        "usuarioApellidoPaterno": "Dedo",
+        "usuarioApellidoMaterno": "Oega",
+        "usuarioEmail": "pa.delgado@example.com",
+        "usuarioTelefono": "555-654-1234"
+      },
+      {
+        "usuarioNombre": "José",
+        "usuarioApellidoPaterno": "Peña",
+        "usuarioApellidoMaterno": "Figueroa",
+        "usuarioEmail": "joseluis.pena@example.com",
+        "usuarioTelefono": "555-432-2109"
+      },
+      {
+        "usuarioNombre": "Andr",
+        "usuarioApellidoPaterno": "San",
+        "usuarioApellidoMaterno": "Lano",
+        "usuarioEmail": "andrea.santos@example.com",
+        "usuarioTelefono": "555-890-4321"
+      },
+      {
+        "usuarioNombre": "Enri",
+        "usuarioApellidoPaterno": "Domín",
+        "usuarioApellidoMaterno": "Silva",
+        "usuarioEmail": "enrique.dominguez@example.com",
+        "usuarioTelefono": "555-789-4321"
+      },
+      {
+        "usuarioNombre": "Adr",
+        "usuarioApellidoPaterno": "Res",
+        "usuarioApellidoMaterno": "Vuez",
+        "usuarioEmail": "adrian.reyes@example.com",
+        "usuarioTelefono": "555-890-3456"
+      },
+      {
+        "usuarioNombre": "Mar",
+        "usuarioApellidoPaterno": "Vega",
+        "usuarioApellidoMaterno": "Naranjo",
+        "usuarioEmail": "mar.vega@example.com",
+        "usuarioTelefono": "555-876-0987"
+      },
+      {
+        "usuarioNombre": "Christian",
+        "usuarioApellidoPaterno": "Zúñiga",
+        "usuarioApellidoMaterno": "Delgado",
+        "usuarioEmail": "christian.zuniga@example.com",
+        "usuarioTelefono": "555-234-8765"
+      },
+      {
+        "usuarioNombre": "Pablo",
+        "usuarioApellidoPaterno": "Delgado",
+        "usuarioApellidoMaterno": "Ortega",
+        "usuarioEmail": "pablo.delgado@example.com",
+        "usuarioTelefono": "555-654-1234"
+      },
+      {
+        "usuarioNombre": "José Luis",
+        "usuarioApellidoPaterno": "Peña",
+        "usuarioApellidoMaterno": "Figueroa",
+        "usuarioEmail": "joseluis.pena@example.com",
+        "usuarioTelefono": "555-432-2109"
+      },
+      {
+        "usuarioNombre": "Andrea",
+        "usuarioApellidoPaterno": "Santos",
+        "usuarioApellidoMaterno": "Lozano",
+        "usuarioEmail": "andrea.santos@example.com",
+        "usuarioTelefono": "555-890-4321"
+      },
+      {
+        "usuarioNombre": "Enrique",
+        "usuarioApellidoPaterno": "Domínguez",
+        "usuarioApellidoMaterno": "Silva",
+        "usuarioEmail": "enrique.dominguez@example.com",
+        "usuarioTelefono": "555-789-4321"
+      },
+      {
+        "usuarioNombre": "Adrián",
+        "usuarioApellidoPaterno": "Reyes",
+        "usuarioApellidoMaterno": "Velázquez",
+        "usuarioEmail": "adrian.reyes@example.com",
+        "usuarioTelefono": "555-890-3456"
+      },
+      {
+        "usuarioNombre": "Daniel",
+        "usuarioApellidoPaterno": "Vega",
+        "usuarioApellidoMaterno": "Naranjo",
+        "usuarioEmail": "daniel.vega@example.com",
+        "usuarioTelefono": "555-876-0987"
+      },
+      {
+        "usuarioNombre": "Chris",
+        "usuarioApellidoPaterno": "Zú",
+        "usuarioApellidoMaterno": "Gado",
+        "usuarioEmail": "christian.zuniga@example.com",
+        "usuarioTelefono": "555-234-8765"
+      },
+      {
+        "usuarioNombre": "Pepe",
+        "usuarioApellidoPaterno": "Delo",
+        "usuarioApellidoMaterno": "Ortega",
+        "usuarioEmail": "pep.delgado@example.com",
+        "usuarioTelefono": "555-654-1234"
+      }
+    ]
+  }
+  
