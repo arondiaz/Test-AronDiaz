@@ -115,11 +115,6 @@ export default {
 </script>
 
 <style scoped>
-/* .search {
-    padding: 0.5rem 0.8rem;
-    border-radius: 1rem;
-} */
-
 .search {
     width: 100%;
     max-width: 300px;
@@ -156,7 +151,6 @@ export default {
     padding: 0.5rem 0;
 }
 
-/* Estilos para cada ítem en los resultados */
 .searchResults .li {
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
@@ -167,7 +161,6 @@ export default {
 
 .searchResults .li:hover {
     background-color: var(--light-blue);
-    /* Fondo azul claro al pasar el mouse */
 }
 
 

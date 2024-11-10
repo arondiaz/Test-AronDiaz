@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
-    <div class="filter-container">
+  <div class="data-table-container">
+    <div class="search-container">
       <TableFilter :users="users" />
     </div>
-    <div class="header">
-      <div class="column-toggle">
-        <button @click="toggleColumnOptions" class="display-btn">
-          Display
+    <div class="header-container">
+      <div class="filter-container">
+        <button @click="toggleColumnOptions" class="filter-btn">
+          Filtrar
         </button>
-        <div v-show="showColumnOptions" class="column-options">
+        <div v-show="showColumnOptions" class="filter-options">
           <label v-for="(value, key) in visibleColumns" :key="key">
             <input type="checkbox" v-model="visibleColumns[key]" />
             {{ capitalizeFirstLetter(key) }}
@@ -41,7 +41,7 @@
             <td>
               <div class="image-container">
                 <img v-if="user.imageUrl" :src="user.imageUrl" :alt="`${user.nombre} ${user.apellidos}`" />
-                <div v-else class="placeholder"></div>
+                <div v-else class="image-display"></div>
                 <input type="file" accept="image/*" @change="handleImageUpload(user.id, $event)" class="file-input"
                   :id="'image-upload-' + user.id" />
                 <label :for="'image-upload-' + user.id" class="upload-label">
@@ -122,6 +122,7 @@ export default {
     };
 
     const startIdx = () => currentPage.value * itemsPerPage;
+
     const paginatedUsers = computed(() => {
       return users.value.slice(startIdx(), startIdx() + itemsPerPage);
     });
@@ -138,7 +139,6 @@ export default {
     onMounted(() => {
       fetchData();
     });
-
 
     watch(users, () => {
       localStorage.setItem('users', JSON.stringify(users.value));
@@ -163,44 +163,39 @@ export default {
 </script>
 
 <style scoped>
-.filter-container {
+
+
+.data-table-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 1rem;
+  max-width: 80%;
+  background-color: var(--background-color);
+}
+
+.search-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: auto;
-  padding: 20px;
-  max-width: 80%;
-  background-color: var(--background-color);
-}
-
-
-.header {
+.header-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  
 }
 
-
-.header h1 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-
-.column-toggle {
+.filter-container {
   position: relative;
   display: inline-block;
   margin-bottom: 1rem;
 }
 
-.display-btn {
+.filter-btn {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   color: #fff;
@@ -212,13 +207,12 @@ export default {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.display-btn:hover {
+.filter-btn:hover {
   background-color: #1159a7;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  /* Sombra más intensa al pasar el mouse */
 }
 
-.column-options {
+.filter-options {
   position: absolute;
   top: 100%;
   left: 0;
@@ -232,7 +226,7 @@ export default {
   z-index: 1000;
 }
 
-.column-options label {
+.filter-options label {
   display: flex;
   align-items: center;
   font-size: 1.1rem;
@@ -242,11 +236,11 @@ export default {
   transition: background-color 0.2s ease;
 }
 
-.column-options label:hover {
+.filter-options label:hover {
   background-color: #f0f8ff;
 }
 
-.column-options input[type="checkbox"] {
+.filter-options input[type="checkbox"] {
   margin-right: 0.5rem;
   accent-color: #007bff;
 }
@@ -301,11 +295,11 @@ export default {
   background-color: #f7f7f700;
   padding: 0.5rem 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid black;
+  border: 1px solid var(--dark-blue);
 
 }
 
-.placeholder {
+.image-display {
   width: 40px;
   height: 40px;
   border-radius: 50%;
