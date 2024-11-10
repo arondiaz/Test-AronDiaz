@@ -1,12 +1,9 @@
 <template>
-  <div class="containerr" :data-theme="theme">
-    <div class="theme-container">
+  <div class="container" :data-theme="theme">
+    <div class="btn-theme-container">
       <button @click="toggleTheme" class="btn-theme">{{ theme === "dark" ? "LIGHT" : "DARK" }}</button>
-
     </div>
-
     <DataTable class="app" />
-
   </div>
 
 </template>
@@ -34,34 +31,31 @@ watch(theme, (newTheme) => {
 </script>
 
 
-<style scoped>
+<style>
 * {
   box-sizing: border-box;
-
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   text-decoration: none;
   background-color: var(--background-color);
-
 }
 
 .app {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-
 }
 
-.containerr {
+.container {
   display: flex;
   flex-direction: column;
   background-color: var(--background-color);
 }
 
-.theme-container {
+.btn-theme-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,16 +63,14 @@ body {
 }
 
 [data-theme="light"] {
-  --background-color: #a3a3a3;
+  --background-color: #f5f5f5;
   --text-color: #000000;
 }
 
-/* Tema oscuro */
 [data-theme="dark"] {
   --background-color: #000000;
   --text-color: #ffffff;
 }
-
 
 .btn-theme {
   padding: 0.5rem 1rem;
@@ -97,4 +89,20 @@ body {
 }
 
 
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-blue);
+  border-radius: 10px;
+  border: 2px solid var(--background-color);
+}
 </style>

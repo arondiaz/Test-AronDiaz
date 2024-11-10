@@ -25,8 +25,8 @@
             <th v-if="visibleColumns.apellidos">Apellidos</th>
             <th v-if="visibleColumns.telefono">Telefono</th>
             <th v-if="visibleColumns.email">Email</th>
-            <th>Image</th>
-            <th>Actions</th>
+            <th>Imagen</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -163,8 +163,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .data-table-container {
   display: flex;
   justify-content: center;
@@ -186,7 +184,7 @@ export default {
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  
+
 }
 
 .filter-container {
@@ -248,7 +246,7 @@ export default {
 .table-container {
   overflow-x: auto;
   background-color: var(--dark-blue);
-  border: 1px solid black;
+  border: 1px solid var(--text-color);
 }
 
 .data-table {
