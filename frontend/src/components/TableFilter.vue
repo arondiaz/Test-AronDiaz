@@ -17,9 +17,25 @@
 
         <div v-if="selectedUser" class="modal-overlay" @click="closeModal">
             <div class="modal-content" @click.stop>
-                <h3>{{ selectedUser.usuarioNombre }}</h3>
-                <p>Información adicional del usuario aquí...</p>
-                <button @click="closeModal">Cerrar</button>
+                <div class="close-btn-container">
+                    <button @click="closeModal">x</button>
+
+                </div>
+                <div v-show="selectedUser.imageUrl" class="image-container">
+                    <img v-if="selectedUser.imageUrl" :src="selectedUser.imageUrl"
+                        :alt="`${selectedUser.usuarioNombre} ${selectedUser.usuarioNombre}`" />
+                </div>
+                <div>
+                    <h3><strong class="strong"> Nombre: </strong>{{ selectedUser.usuarioNombre }}</h3>
+                <h3><strong class="strong"> Apellidos: </strong>{{ selectedUser.usuarioApellidoPaterno }} {{
+                    selectedUser.usuarioApellidoMaterno }}</h3>
+                <h3><strong class="strong"> Email: </strong>{{ selectedUser.usuarioEmail }}</h3>
+                <h3><strong class="strong"> Telefono: </strong>{{ selectedUser.usuarioTelefono }}</h3>
+                <h3><strong class="strong"> Registro número: </strong>{{ selectedUser.id }}</h3>
+
+                </div>
+                
+
             </div>
         </div>
     </div>
@@ -55,6 +71,7 @@ export default {
 
         const showUserModal = (user) => {
             selectedUser.value = user;
+            console.log(selectedUser);
         };
 
         const closeModal = () => {
@@ -137,23 +154,85 @@ ul li:nth-child(even) {
     color: #333;
 }
 
+
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
+
+
 .modal-content {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    max-width: 400px;
-    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+
+.close-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-btn-container button {
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn-container button:hover {
+    background-color: #ff3333;
+    transform: scale(1.1);
+}
+
+.close-btn-container button:active {
+    transform: scale(0.9);
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.image-container img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #333;
+    font-weight: lighter;
+}
+
+.strong {
+    font-weight: 700;
 }
 </style>
