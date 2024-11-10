@@ -79,7 +79,7 @@ export default {
   setup() {
     const users = ref(JSON.parse(localStorage.getItem('users')) || []);
     const currentPage = ref(0);
-    const itemsPerPage = 4;
+    const itemsPerPage = 10;
     const visibleColumns = ref({
       id: true,
       nombre: true,
@@ -94,11 +94,8 @@ export default {
     };
 
     const deleteUser = (email) => {
-      console.log(email);
       users.value = users.value.filter(user => user.usuarioEmail !== email);
       localStorage.setItem('users', JSON.stringify(users.value));
-
-
     };
 
     const handleImageUpload = (id, event) => {
@@ -122,10 +119,6 @@ export default {
           ...user, id: index + 1,
         }))
       }
-      // else {
-      //   users.value = storedUsers;
-      // }
-
     };
 
     const startIdx = () => currentPage.value * itemsPerPage;
@@ -183,6 +176,7 @@ export default {
   margin: auto;
   padding: 20px;
   max-width: 80%;
+  background-color: var(--background-color);
 }
 
 
@@ -199,52 +193,69 @@ export default {
   font-weight: bold;
 }
 
-.display-btn {
-  background-color: black;
-  color: white;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
 
 .column-toggle {
   position: relative;
-  display: inline-flex;
-
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
-.column-toggle button {
+.display-btn {
   padding: 0.5rem 1rem;
-  font-size: 14px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #014083;
+  border: none;
+  border-radius: 0.7rem;
   cursor: pointer;
-  margin-left: auto;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.display-btn:hover {
+  background-color: #1159a7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Sombra más intensa al pasar el mouse */
 }
 
 .column-options {
   position: absolute;
-  right: 0;
-  top: 36px;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
   width: 150px;
   background-color: #fff;
   border: 1px solid #ddd;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-.check {
-  margin-right: 0.5rem;
+.column-options label {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #333;
+  padding: 0.3rem 0;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.column-options label:hover {
+  background-color: #f0f8ff;
+}
+
+.column-options input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: #007bff;
 }
 
 .table-container {
   overflow-x: auto;
   background-color: var(--dark-blue);
   border: 1px solid black;
-  /* Background color for the table container */
 }
-
 
 .data-table {
   width: 100%;
@@ -253,7 +264,7 @@ export default {
 
 .data-table th,
 .data-table td {
-  padding: 12px;
+  padding: 0.8rem;
   text-align: center;
   background-color: var(--light-blue);
   border-bottom: 1px solid #ddd;

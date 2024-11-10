@@ -9,7 +9,7 @@
             <div class="results-container">
                 <li v-for="user in searchResults.slice(0, 3)" :key="user.id"
                     @click="showUserModal(user); showResults = false" class="li">
-                    {{ user.usuarioNombre }}
+                    {{ user.usuarioNombre }} {{ user.usuarioApellidoPaterno }}
                 </li>
             </div>
         </ul>
@@ -27,14 +27,14 @@
                 </div>
                 <div>
                     <h3><strong class="strong"> Nombre: </strong>{{ selectedUser.usuarioNombre }}</h3>
-                <h3><strong class="strong"> Apellidos: </strong>{{ selectedUser.usuarioApellidoPaterno }} {{
-                    selectedUser.usuarioApellidoMaterno }}</h3>
-                <h3><strong class="strong"> Email: </strong>{{ selectedUser.usuarioEmail }}</h3>
-                <h3><strong class="strong"> Telefono: </strong>{{ selectedUser.usuarioTelefono }}</h3>
-                <h3><strong class="strong"> Registro número: </strong>{{ selectedUser.id }}</h3>
+                    <h3><strong class="strong"> Apellidos: </strong>{{ selectedUser.usuarioApellidoPaterno }} {{
+                        selectedUser.usuarioApellidoMaterno }}</h3>
+                    <h3><strong class="strong"> Email: </strong>{{ selectedUser.usuarioEmail }}</h3>
+                    <h3><strong class="strong"> Telefono: </strong>{{ selectedUser.usuarioTelefono }}</h3>
+                    <h3><strong class="strong"> Registro número: </strong>{{ selectedUser.id }}</h3>
 
                 </div>
-                
+
 
             </div>
         </div>
@@ -115,28 +115,61 @@ export default {
 </script>
 
 <style scoped>
-.search {
+/* .search {
     padding: 0.5rem 0.8rem;
     border-radius: 1rem;
+} */
+
+.search {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search:focus {
+    border-color: var(--dark-blue);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
 }
 
 .searchResults {
-    position: relative;
+    position: absolute;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 0.5rem;
+    padding: 0;
+    list-style-type: none;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1000;
 }
 
 .results-container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    max-width: 180px;
-    border-radius: 0.2rem;
-    background-color: white;
-    border: 1px solid #e2e8f0;
-    /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06); */
+    padding: 0.5rem 0;
 }
+
+/* Estilos para cada ítem en los resultados */
+.searchResults .li {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.searchResults .li:hover {
+    background-color: var(--light-blue);
+    /* Fondo azul claro al pasar el mouse */
+}
+
 
 .results-container.hidden {
     display: none;
@@ -150,8 +183,8 @@ export default {
 }
 
 ul li:nth-child(even) {
-    background-color: rgb(219, 218, 218);
-    color: #333;
+    border-top: 1px solid rgb(201, 198, 198);
+    border-bottom: 1px solid rgb(201, 198, 198);
 }
 
 
