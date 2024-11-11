@@ -14,6 +14,7 @@
             </div>
         </ul>
 
+
         <div v-if="selectedUser" class="modal-overlay" @click="closeModal">
             <div class="modal-content" @click.stop>
                 <div class="close-btn-container">
@@ -73,10 +74,6 @@ export default {
             selectedUser.value = null;
         };
 
-        const route = (id) => {
-            console.log(id);
-        };
-
         const handleClickOutside = (event) => {
             if (!event.target.closest(".search") && !event.target.closest(".searchResults")) {
                 showResults.value = false;
@@ -97,7 +94,6 @@ export default {
             searchTerm,
             searchResults,
             handleSearch,
-            route,
             showResults,
             closeModal,
             selectedUser,

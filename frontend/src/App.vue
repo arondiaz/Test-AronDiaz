@@ -45,12 +45,17 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   background-color: var(--background-color);
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 1rem; 
+
 }
 
 .btn-theme-container {
@@ -79,7 +84,6 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .btn-theme:hover {

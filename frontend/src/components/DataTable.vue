@@ -1,97 +1,36 @@
 <template>
 
-  <div v-if="error" class="error-container">
-    <p class="error-message">{{ error }}</p>
-  </div>
-
-  <div v-else class="data-table-container">
+  <div>
     <div class="search-container">
-      <TableFilter :users="users" />
+      <TableFilter :users="users" :visibleColumns="visibleColumns" />
     </div>
     <div class="header-container">
-      <div class="filter-container">
-        <button @click="toggleColumnOptions" class="filter-btn">
-          Filtrar
-        </button>
-
-        <div v-show="showColumnOptions" class="filter-options">
-          <label v-for="(value, key) in visibleColumns" :key="key">
-            <input type="checkbox" v-model="visibleColumns[key]" />
-            {{ capitalizeFirstLetter(key) }}
-          </label>
-        </div>
-
-      </div>
+      <ColumnFilter :visibleColumns="visibleColumns" />
     </div>
-
-    <div class="table-container">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th v-if="visibleColumns.id">ID</th>
-            <th v-if="visibleColumns.nombre">Nombre</th>
-            <th v-if="visibleColumns.apellidos">Apellidos</th>
-            <th v-if="visibleColumns.telefono">Telefono</th>
-            <th v-if="visibleColumns.email">Email</th>
-            <th>Imagen</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr v-for="user in paginatedUsers" :key="user.id">
-
-            <td v-if="visibleColumns.id">{{ user.id }}</td>
-            <td v-if="visibleColumns.nombre">{{ user.usuarioNombre }}</td>
-            <td v-if="visibleColumns.apellidos">{{ user.usuarioApellidoPaterno + " " + user.usuarioApellidoMaterno }}
-            </td>
-            <td v-if="visibleColumns.telefono">{{ user.usuarioTelefono }}</td>
-            <td v-if="visibleColumns.email">{{ user.usuarioEmail }}</td>
-
-            <td>
-              <div class="image-container">
-                <img v-if="user.imageUrl" :src="user.imageUrl" :alt="`${user.nombre} ${user.apellidos}`" />
-                <div v-else class="image-display"></div>
-                <input type="file" accept="image/*" @change="handleImageUpload(user.id, $event)" class="file-input"
-                  :id="'image-upload-' + user.id" />
-                <label :for="'image-upload-' + user.id" class="upload-label">
-
-                  Foto </label>
-                <!-- camera -->
-                <button @click="openCamera(user.id)">Abrir Cámara</button>
-                <div v-if="isCameraOpen && activeUserId === user.id" class="camera-modal">
-                  <video ref="video" autoplay></video>
-                  <button @click="capturePhoto(user.id)">Capturar Foto</button>
-                  <button @click="closeCamera">Cerrar Cámara</button>
-                </div>
-              </div>
-            </td>
-            <td>
-              <button @click="deleteUser(user.usuarioEmail)" class="delete-btn">
-                ✖︎
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <TableUser :users="users" :paginatedUsers="paginatedUsers" :visibleColumns="visibleColumns"
+      :handleImageUpload="handleImageUpload" :deleteUser="deleteUser" />
     <div class="pagination-container">
       <TablePagination :currentPage="currentPage" :totalUsers="totalUsers" :itemsPerPage="itemsPerPage"
         @page-change="setCurrentPage" />
     </div>
   </div>
+
 </template>
 
 <script>
 import { ref, onMounted, computed, watch } from 'vue';
 import { getUsers } from '../../data/api.js';
 import TablePagination from './TablePagination.vue';
+import TableUser from './TableUser.vue';
 import TableFilter from './TableFilter.vue';
+import ColumnFilter from './ColumnFilter.vue';
 
 export default {
   components: {
     TablePagination,
+    TableUser,
     TableFilter,
+    ColumnFilter,
   },
   setup() {
     const users = ref(JSON.parse(localStorage.getItem('users')) || []);
@@ -106,10 +45,6 @@ export default {
       email: true,
     });
     const showColumnOptions = ref(false);
-
-    const isCameraOpen = ref(false);
-    const activeUserId = ref(null);
-    const videoRef = ref(null);
 
     const toggleColumnOptions = () => {
       showColumnOptions.value = !showColumnOptions.value;
@@ -174,52 +109,6 @@ export default {
       localStorage.setItem('users', JSON.stringify(users.value));
     });
 
-
-
-    const openCamera = (userId) => {
-      isCameraOpen.value = true;
-      activeUserId.value = userId;
-      setTimeout(() => {
-        if (videoRef.value) {
-          navigator.mediaDevices.getUserMedia({ video: true })
-            .then((stream) => {
-              videoRef.value.srcObject = stream;
-            })
-            .catch((err) => {
-              error.value = "Error al acceder a la cámara.";
-              console.error("Error al acceder a la cámara:", err);
-            });
-        }
-      }, 100);
-    };
-
-    const capturePhoto = (userId) => {
-      const video = videoRef.value;
-      const canvas = document.createElement("canvas");
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const context = canvas.getContext("2d");
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const imageUrl = canvas.toDataURL("image/png");
-
-      // Actualizar imagen del usuario
-      users.value = users.value.map((user) =>
-        user.id === userId ? { ...user, imageUrl } : user
-      );
-
-      closeCamera();
-    };
-
-    const closeCamera = () => {
-      isCameraOpen.value = false;
-      activeUserId.value = null;
-      const video = videoRef.value;
-      const stream = video.srcObject;
-      const tracks = stream?.getTracks();
-      tracks?.forEach((track) => track.stop());
-    };
-
-
     return {
       users,
       error,
@@ -234,19 +123,13 @@ export default {
       totalUsers,
       setCurrentPage,
       capitalizeFirstLetter,
-
-      isCameraOpen,
-      activeUserId,
-      videoRef,
-      openCamera,
-      capturePhoto,
-      closeCamera,
     };
   },
 };
 </script>
 
-<style scoped>
+
+<style>
 .data-table-container {
   display: flex;
   justify-content: center;
@@ -418,28 +301,5 @@ export default {
   font-size: 1.2rem;
   font-weight: bold;
   padding: 1rem;
-}
-
-
-.camera-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-video {
-  width: 300px;
-  height: auto;
-}
-
-button {
-  margin: 10px;
 }
 </style>
