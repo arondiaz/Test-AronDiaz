@@ -1,7 +1,6 @@
-#### Prueba técnica Frontend - Aron Diaz
+## Prueba técnica Frontend - Aron Diaz
 Este proyecto consta de un Frontend y un Backend. Aunque no se requería un Backend para la prueba técnica (ya que se proporcionó un endpoint con la lista de usuarios), se implementó uno debido a problemas de seguridad al intentar consumir el endpoint directamente desde el navegador. El Backend creado proporciona la misma respuesta que el endpoint original.
 
-#####
 
 ### Documetación:
 
@@ -43,5 +42,3 @@ git clone https://github.com/arondiaz/Test-AronDiaz
 3. Ejecutar el siguiente comando para iniciar el servidor de desarrollo:
    `npm run dev`, creara el proyecto en "http://localhost:5173/"
 
-
-```
