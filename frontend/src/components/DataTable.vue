@@ -179,13 +179,18 @@ export default {
     const openCamera = (userId) => {
       isCameraOpen.value = true;
       activeUserId.value = userId;
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then((stream) => {
-          videoRef.value.srcObject = stream;
-        })
-        .catch((err) => {
-          console.error("Error al acceder a la cámara:", err);
-        });
+      setTimeout(() => {
+        if (videoRef.value) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+              videoRef.value.srcObject = stream;
+            })
+            .catch((err) => {
+              error.value = "Error al acceder a la cámara.";
+              console.error("Error al acceder a la cámara:", err);
+            });
+        }
+      }, 100);
     };
 
     const capturePhoto = (userId) => {
