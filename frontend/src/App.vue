@@ -5,9 +5,7 @@
     </div>
     <DataTable class="app" />
   </div>
-
 </template>
-
 
 <script setup>
 import DataTable from "./components/DataTable.vue";
@@ -87,7 +85,6 @@ body {
 .btn-theme:hover {
   background-color: #555;
 }
-
 
 /* scrollbar */
 ::-webkit-scrollbar {

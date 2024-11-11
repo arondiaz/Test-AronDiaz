@@ -1,9 +1,10 @@
 import express from "express";
 import fs from "fs";
-import cors from "cors"
+import cors from "cors";
+
 const app = express();
-app.use(cors())
-const PORT = 4040;
+app.use(cors());
+const PORT = 4044;
 
 app.get("/api/usuarios", (req, res) => {
   fs.readFile("./data/users.json", "utf8", (err, data) => {
@@ -12,7 +13,7 @@ app.get("/api/usuarios", (req, res) => {
       res.status(500).json({ error: "Error al leer los datos" });
       return;
     }
-    res.json(JSON.parse(data));
+    res.status(200).json(JSON.parse(data));
   });
 });
 

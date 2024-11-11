@@ -14,7 +14,6 @@
             </div>
         </ul>
 
-
         <div v-if="selectedUser" class="modal-overlay" @click="closeModal">
             <div class="modal-content" @click.stop>
                 <div class="close-btn-container">
@@ -34,7 +33,6 @@
                     <h3><strong class="strong"> Registro número: </strong>{{ selectedUser.id }}</h3>
 
                 </div>
-
 
             </div>
         </div>
@@ -65,19 +63,15 @@ export default {
             } else {
                 searchResults.value = [];
             }
-            // console.log(searchResults.value.length > 1);
         };
-
 
         const showUserModal = (user) => {
             selectedUser.value = user;
-            console.log(selectedUser);
         };
 
         const closeModal = () => {
             selectedUser.value = null;
         };
-
 
         const route = (id) => {
             console.log(id);
@@ -108,7 +102,6 @@ export default {
             closeModal,
             selectedUser,
             showUserModal,
-
         };
     },
 };
@@ -180,7 +173,6 @@ ul li:nth-child(even) {
     border-bottom: 1px solid rgb(201, 198, 198);
 }
 
-
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -194,8 +186,6 @@ ul li:nth-child(even) {
     z-index: 1000;
 }
 
-
-
 .modal-content {
     background-color: #fff;
     border-radius: 10px;
@@ -205,7 +195,6 @@ ul li:nth-child(even) {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
-
 
 .close-btn-container {
     display: flex;

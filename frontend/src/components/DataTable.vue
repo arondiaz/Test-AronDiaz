@@ -1,5 +1,10 @@
 <template>
-  <div class="data-table-container">
+
+  <div v-if="error" class="error-container">
+    <p class="error-message">{{ error }}</p>
+  </div>
+
+  <div v-else class="data-table-container">
     <div class="search-container">
       <TableFilter :users="users" />
     </div>
@@ -8,14 +13,17 @@
         <button @click="toggleColumnOptions" class="filter-btn">
           Filtrar
         </button>
+
         <div v-show="showColumnOptions" class="filter-options">
           <label v-for="(value, key) in visibleColumns" :key="key">
             <input type="checkbox" v-model="visibleColumns[key]" />
             {{ capitalizeFirstLetter(key) }}
           </label>
         </div>
+
       </div>
     </div>
+
     <div class="table-container">
       <table class="data-table">
         <thead>
@@ -29,8 +37,10 @@
             <th></th>
           </tr>
         </thead>
+
         <tbody>
           <tr v-for="user in paginatedUsers" :key="user.id">
+
             <td v-if="visibleColumns.id">{{ user.id }}</td>
             <td v-if="visibleColumns.nombre">{{ user.usuarioNombre }}</td>
             <td v-if="visibleColumns.apellidos">{{ user.usuarioApellidoPaterno + " " + user.usuarioApellidoMaterno }}
@@ -47,6 +57,13 @@
                 <label :for="'image-upload-' + user.id" class="upload-label">
 
                   Foto </label>
+                <!-- camera -->
+                <button @click="openCamera(user.id)">Abrir Cámara</button>
+                <div v-if="isCameraOpen && activeUserId === user.id" class="camera-modal">
+                  <video ref="video" autoplay></video>
+                  <button @click="capturePhoto(user.id)">Capturar Foto</button>
+                  <button @click="closeCamera">Cerrar Cámara</button>
+                </div>
               </div>
             </td>
             <td>
@@ -78,6 +95,7 @@ export default {
   },
   setup() {
     const users = ref(JSON.parse(localStorage.getItem('users')) || []);
+    const error = ref("");
     const currentPage = ref(0);
     const itemsPerPage = 10;
     const visibleColumns = ref({
@@ -88,6 +106,10 @@ export default {
       email: true,
     });
     const showColumnOptions = ref(false);
+
+    const isCameraOpen = ref(false);
+    const activeUserId = ref(null);
+    const videoRef = ref(null);
 
     const toggleColumnOptions = () => {
       showColumnOptions.value = !showColumnOptions.value;
@@ -114,10 +136,18 @@ export default {
     const fetchData = async () => {
       const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
       if (storedUsers.length === 0) {
-        const data = await getUsers();
-        users.value = data.map((user, index) => ({
-          ...user, id: index + 1,
-        }))
+        try {
+          const data = await getUsers();
+          if (data.length == 0) {
+            return error.value = "Error al obtener usuarios, intente nuevamente"
+          }
+          users.value = data.map((user, index) => ({
+            ...user, id: index + 1,
+          }))
+        } catch (error) {
+          console.log("Error al obtener usuarios", error);
+          error.value = "Hubo un problema al cargar los usuarios"
+        }
       }
     };
 
@@ -144,8 +174,50 @@ export default {
       localStorage.setItem('users', JSON.stringify(users.value));
     });
 
+
+
+    const openCamera = (userId) => {
+      isCameraOpen.value = true;
+      activeUserId.value = userId;
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+          videoRef.value.srcObject = stream;
+        })
+        .catch((err) => {
+          console.error("Error al acceder a la cámara:", err);
+        });
+    };
+
+    const capturePhoto = (userId) => {
+      const video = videoRef.value;
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const context = canvas.getContext("2d");
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageUrl = canvas.toDataURL("image/png");
+
+      // Actualizar imagen del usuario
+      users.value = users.value.map((user) =>
+        user.id === userId ? { ...user, imageUrl } : user
+      );
+
+      closeCamera();
+    };
+
+    const closeCamera = () => {
+      isCameraOpen.value = false;
+      activeUserId.value = null;
+      const video = videoRef.value;
+      const stream = video.srcObject;
+      const tracks = stream?.getTracks();
+      tracks?.forEach((track) => track.stop());
+    };
+
+
     return {
       users,
+      error,
       currentPage,
       itemsPerPage,
       visibleColumns,
@@ -157,6 +229,13 @@ export default {
       totalUsers,
       setCurrentPage,
       capitalizeFirstLetter,
+
+      isCameraOpen,
+      activeUserId,
+      videoRef,
+      openCamera,
+      capturePhoto,
+      closeCamera,
     };
   },
 };
@@ -321,5 +400,41 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+
+.camera-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+video {
+  width: 300px;
+  height: auto;
+}
+
+button {
+  margin: 10px;
 }
 </style>
